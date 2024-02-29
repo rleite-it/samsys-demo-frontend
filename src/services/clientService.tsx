@@ -3,7 +3,8 @@ import { ClientDTO } from "../models/client/clientDTO";
 import { ClientEditDTO } from "../models/client/clientEditDTO";
 import { MessagingHelper } from "../models/helper/messagingHelper";
 
-var apiBaseUrl = process.env.REACT_APP_API_URL;
+const apiBaseUrl = process.env.VITE_API_URL;
+
 export class ClientService {
 	async Get(id: number): Promise<MessagingHelper<ClientDTO | null>> {
 		try {
