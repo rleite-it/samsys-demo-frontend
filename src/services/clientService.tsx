@@ -3,7 +3,7 @@ import { ClientDTO } from "../models/client/clientDTO";
 import { ClientEditDTO } from "../models/client/clientEditDTO";
 import { MessagingHelper } from "../models/helper/messagingHelper";
 
-const apiBaseUrl = process.env.VITE_API_URL;
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export class ClientService {
 	async Get(id: number): Promise<MessagingHelper<ClientDTO | null>> {
