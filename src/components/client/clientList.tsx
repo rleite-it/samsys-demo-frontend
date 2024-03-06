@@ -7,7 +7,6 @@ interface Props {
 }
 
 export default function ClientList({ clients }: Props) {
-	console.log(clients);
 	return (
 		<div
 			style={{
