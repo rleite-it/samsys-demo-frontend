@@ -1,4 +1,4 @@
-import { Col } from "reactstrap";
+import { Button, Col } from "reactstrap";
 import { ClientService } from "../../services/clientService";
 import { MessagingHelper } from "../../models/helper/messagingHelper";
 import { useEffect, useState } from "react";
@@ -62,16 +62,14 @@ export default function ClientStatusComponent({
 
 	return (
 		<Col xl={xl}>
-			{isClientActive == true && (
-				<button style={{ ...style }} onClick={disableClient}>
+			{isClientActive ? (
+				<Button color="danger" style={{ ...style }} onClick={disableClient}>
 					Desativar
-				</button>
-			)}
-
-			{isClientActive == false && (
-				<button style={{ ...style }} onClick={enableClient}>
+				</Button>
+			) : (
+				<Button color="success" style={{ ...style }} onClick={enableClient}>
 					Ativar
-				</button>
+				</Button>
 			)}
 		</Col>
 	);
