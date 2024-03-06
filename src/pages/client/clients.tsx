@@ -5,8 +5,11 @@ import ClientList from "../../components/client/clientList";
 import { useEffect, useState } from "react";
 import { ClientDTO } from "../../models/client/clientDTO";
 import { ClientService } from "../../services/clientService";
+import { useNavigate } from "react-router-dom";
 
 export default function Clients() {
+	const navigate = useNavigate();
+
 	const [clients, setClients] = useState<ClientDTO[]>([]);
 	const [filteredClients, setFilteredClients] = useState<ClientDTO[] | []>([]);
 	const clientService = new ClientService();
@@ -53,7 +56,9 @@ export default function Clients() {
 					<FilterInput filterChange={handleFilterChange} />
 				</Col>
 				<Col xs="auto">
-					<Button color="success">Add Client</Button>
+					<Button color="success" onClick={() => navigate("/client/add")}>
+						Add Client
+					</Button>
 				</Col>
 			</Row>
 
