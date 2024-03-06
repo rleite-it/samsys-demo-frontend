@@ -6,6 +6,25 @@ import { MessagingHelper } from "../models/helper/messagingHelper";
 const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export class ClientService {
+	async GetAll(): Promise<MessagingHelper<ClientDTO[] | null>> {
+		try {
+			const result = await axios.get(`/clients.json`, {
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+			});
+
+			return result.data;
+		} catch (ex) {
+			return new MessagingHelper<null>(
+				false,
+				"Ocorreu um erro inesperado ao obter o cliente",
+				null
+			);
+		}
+	}
+
 	async Get(id: number): Promise<MessagingHelper<ClientDTO | null>> {
 		try {
 			const result = await axios.get(`${apiBaseUrl}client/${id}`, {
@@ -20,6 +39,31 @@ export class ClientService {
 			return new MessagingHelper<null>(
 				false,
 				"Ocorreu um erro inesperado ao obter o cliente",
+				null
+			);
+		}
+	}
+
+	async Insert(dto: ClientDTO): Promise<MessagingHelper<ClientDTO | null>> {
+		try {
+			const result = await axios.post(
+				`${apiBaseUrl}client`,
+				{
+					...dto,
+				},
+				{
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+					},
+				}
+			);
+
+			return result.data;
+		} catch (ex) {
+			return new MessagingHelper<null>(
+				false,
+				"Ocorreu um erro inesperado ao inserir novo cliente",
 				null
 			);
 		}
