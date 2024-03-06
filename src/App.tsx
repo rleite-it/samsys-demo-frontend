@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Loading from "./pages/loading/loading";
+import CreateClient from "./pages/client/addClient";
 
 // Import React components using lazy loading
 const Home = React.lazy(() => import("./pages/home"));
@@ -19,6 +20,7 @@ function App() {
 
 						<Route path={"/clients"} element={<Clients />} />
 
+						<Route path="/client/add" element={<CreateClient />} />
 						<Route path="/client/edit/:id" element={<EditClient />} />
 					</Routes>
 				</Suspense>
