@@ -1,6 +1,8 @@
 export interface ClientDTO {
-    name: string;
-    phoneNumber: string;
-    isActive: boolean;
-    concurrencyToken: string;
+	id?: number;
+	name: string;
+	birthDate: Date;
+	phoneNumber: string;
+	isActive: boolean;
+	concurrencyToken: string;
 }
