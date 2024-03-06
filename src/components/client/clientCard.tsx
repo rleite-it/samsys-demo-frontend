@@ -1,4 +1,4 @@
-import { Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
+import { Card, CardBody, CardText, CardTitle } from "reactstrap";
 import { ClientDTO } from "../../models/client/clientDTO";
 import { useNavigate } from "react-router-dom";
 import formatDate from "../../utils/formatDate";
