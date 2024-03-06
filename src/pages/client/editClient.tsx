@@ -1,22 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import {
-	Col,
-	Row,
-	Form,
-	FormGroup,
-	Label,
-	Input,
-	Button,
-	Alert,
-} from "reactstrap";
+import { useNavigate, useParams } from "react-router-dom";
+import { Form, FormGroup, Label, Input, Button, Alert } from "reactstrap";
 import { ClientDTO } from "../../models/client/clientDTO";
 import { ClientEditDTO } from "../../models/client/clientEditDTO";
 import { MessagingHelper } from "../../models/helper/messagingHelper";
 import { ClientService } from "../../services/clientService";
 import ClientStatusComponent from "../../components/client/statusComponent";
+import { CloseIcon } from "../../assets/closeIcon";
 
 export default function EditClient() {
+	const navigate = useNavigate();
+
 	const { id } = useParams<{ id: string }>();
 	const [clientToUpdate, setClientToUpdate] = useState<ClientEditDTO>();
 	const [isActive, setIsActive] = useState<boolean>(true);
@@ -67,16 +61,11 @@ export default function EditClient() {
 	return (
 		<div
 			className="edit-client-container"
-			style={{ display: "flex", flexDirection: "column", placeItems: "center" }}
+			style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
 		>
 			<h1 className="text-center">Editar Cliente</h1>
 			<div className="form-container">
-				<Form
-					style={{
-						maxWidth: "600px",
-						marginTop: "3rem",
-					}}
-				>
+				<Form style={{ maxWidth: "600px", marginTop: "3rem" }}>
 					<FormGroup style={{ textAlign: "left" }}>
 						<Label for="name">Nome:</Label>
 						<Input
@@ -133,6 +122,19 @@ export default function EditClient() {
 						{successMessage}
 					</Alert>
 				)}
+				{/* Clickable div with CloseIcon */}
+				<div
+					className="close-button"
+					onClick={() => navigate("/clients")}
+					style={{
+						position: "absolute",
+						top: "10px",
+						left: "10px",
+						cursor: "pointer",
+					}}
+				>
+					<CloseIcon width={40} height={40} />
+				</div>
 			</div>
 		</div>
 	);
