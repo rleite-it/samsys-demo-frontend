@@ -5,6 +5,7 @@ import Loading from "./pages/loading/loading";
 
 // Import React components using lazy loading
 const Home = React.lazy(() => import("./pages/home"));
+const Clients = React.lazy(() => import("./pages/client/clients"));
 const EditClient = React.lazy(() => import("./pages/client/editClient"));
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
 				<Suspense fallback={<Loading />}>
 					<Routes>
 						<Route path={"/"} element={<Home />} />
+
+						<Route path={"/clients"} element={<Clients />} />
 
 						<Route path="/client/edit/:id" element={<EditClient />} />
 					</Routes>
