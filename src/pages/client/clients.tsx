@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { ClientDTO } from "../../models/client/clientDTO";
 import { ClientService } from "../../services/clientService";
 import { useNavigate } from "react-router-dom";
+import { CloseIcon } from "../../assets/closeIcon";
+import GoBack from "../../components/goBack";
 
 export default function Clients() {
 	const navigate = useNavigate();
@@ -44,30 +46,33 @@ export default function Clients() {
 	}, []);
 
 	return (
-		<Container>
-			<Row className="mb-5">
-				<Col>
-					<Title title="List of Clients" />
-				</Col>
-			</Row>
-			{/* Row for Filter Input and Add Button */}
-			<Row className="mb-3 justify-content-center">
-				<Col xs="auto" className="d-flex align-items-center">
-					<FilterInput filterChange={handleFilterChange} />
-				</Col>
-				<Col xs="auto">
-					<Button color="success" onClick={() => navigate("/client/add")}>
-						Add Client
-					</Button>
-				</Col>
-			</Row>
+		<>
+			<Container>
+				<Row className="mb-5">
+					<Col>
+						<Title title="List of Clients" />
+					</Col>
+				</Row>
+				{/* Row for Filter Input and Add Button */}
+				<Row className="mb-3 justify-content-center">
+					<Col xs="auto" className="d-flex align-items-center">
+						<FilterInput filterChange={handleFilterChange} />
+					</Col>
+					<Col xs="auto">
+						<Button color="success" onClick={() => navigate("/client/add")}>
+							Add Client
+						</Button>
+					</Col>
+				</Row>
 
-			{/* Row for List of Cards */}
-			<Row>
-				<Col>
-					<ClientList clients={filteredClients} />
-				</Col>
-			</Row>
-		</Container>
+				{/* Row for List of Cards */}
+				<Row>
+					<Col>
+						<ClientList clients={filteredClients} />
+					</Col>
+				</Row>
+			</Container>
+			<GoBack url={"/"} />
+		</>
 	);
 }

@@ -3,13 +3,10 @@ import { Form, FormGroup, Label, Input, Button, Alert } from "reactstrap";
 import { ClientDTO } from "../../models/client/clientDTO";
 import { MessagingHelper } from "../../models/helper/messagingHelper";
 import { ClientService } from "../../services/clientService";
-import { useNavigate } from "react-router-dom";
-import { CloseIcon } from "../../assets/closeIcon";
 import { ClientAddDTO } from "../../models/client/clientAddDTO";
+import GoBack from "../../components/goBack";
 
 export default function CreateClient() {
-	const navigate = useNavigate();
-
 	const [newClient, setNewClient] = useState<ClientAddDTO>({
 		name: "",
 		phoneNumber: "",
@@ -111,19 +108,7 @@ export default function CreateClient() {
 					{successMessage && <Alert color="success">{successMessage}</Alert>}
 				</div>
 			</div>
-			{/* Clickable div with CloseIcon */}
-			<div
-				className="close-button"
-				onClick={() => navigate("/clients")}
-				style={{
-					position: "absolute",
-					top: "10px",
-					left: "10px",
-					cursor: "pointer",
-				}}
-			>
-				<CloseIcon width={40} height={40} />
-			</div>
+			<GoBack url={"/clients"} />
 		</div>
 	);
 }
